@@ -1,0 +1,78 @@
+package traversals;
+
+class Node {
+	int key;
+	Node left, right;
+	
+	public Node(int item) {
+		key = item;
+		left = right = null;
+	}
+}
+
+public class BInrayTree {
+	
+	Node root;
+	
+	BInrayTree() { root = null; }
+	
+	void printPostOrder(Node node) {
+		if (node == null)
+			return;
+		
+		printPostOrder(node.left);
+		printPostOrder(node.right);
+		System.out.print(node.key + " ");
+	}
+	
+	void printPreorder(Node node) {
+		if (node == null)
+			return;
+		
+		System.out.print(node.key + " ");
+		printPreorder(node.left);
+		printPreorder(node.right);
+	}
+	
+	void printInorder(Node node) {
+		if (node == null)
+			return;
+		
+		printInorder(node.left);
+		System.out.print(node.key + " ");
+		printInorder(node.right);
+	}
+	
+	void printPostorder(Node node) {
+		if (node == null)
+			return;
+		
+		printPostorder(node.left);
+		printPostorder(node.right);
+		System.out.print(node.key + " ");
+	}
+	
+	void printPostorder() { printPostorder(root); }
+	void printInorder() { printInorder(root); }
+	void printPreorder() { printPreorder(root); }
+	
+
+	public static void main(String[] args) {
+		
+		BInrayTree tree = new BInrayTree();
+		tree.root = new Node(1);
+		tree.root.left = new Node(2);
+		tree.root.right = new Node(3);
+		tree.root.left.left = new Node(4);
+		tree.root.left.right = new Node(5);
+		
+		System.out.println("Preorder traversak of binary tree is: ");
+		tree.printPreorder();
+		
+		System.out.println("\nInirder traversal of binary tree is: ");
+		tree.printInorder();
+		
+		System.out.println("\nPostorder traversal of binary tree is: ");
+		tree.printPostorder();
+	}
+}
